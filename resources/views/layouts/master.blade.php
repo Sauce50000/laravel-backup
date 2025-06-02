@@ -7,26 +7,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>master.test</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     {{-- @vite('resources/css/app.css') --}}
     {{-- <link href="/dist/styles.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    @yield('styles')
 
 </head>
 
 <body class="flex flex-col min-h-screen">
-    
-        <div>
-            @include('partials.banner')
-        </div>
-        <main class="flex-1">
-            @yield('content')
-        </main>
-        <footer>
-            @include('partials.footer')
-        </footer>
-    
+
+    <div>
+        @include('partials.banner')
+    </div>
+    <main class="flex-1">
+        @yield('content')
+    </main>
+    <footer>
+        @include('partials.footer')
+    </footer>
+    @yield('scripts')
+
+    <script>
+        const options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+        const today = new Date();
+        document.getElementById("date").innerText = today.toLocaleDateString('en-US', options);
+    </script>
 </body>
 
 </html>
+

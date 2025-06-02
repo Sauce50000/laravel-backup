@@ -1,5 +1,5 @@
-<div class="bg-[#2460b9] text-white flex">
-    <div class="w-1/3 p-4">
+<div class="bg-[#2460b9] text-white flex flex-col md:flex-row ">
+    <div class="w-full md:w-1/3 p-4 text-center md:text-left">
         <h3 class="underline font-bold underline-offset-7 pb-3">सम्पर्क ठेगाना</h3>
         <div class="space-y-1">
             <p>भूमि व्यवस्था, कृषि तथा सहकारी मन्त्रालय</p>
@@ -8,7 +8,7 @@
             <p><i class="fas fa-envelope"></i> info.molmac@karnali.gov.np, molmacp6@gmail.com</p>
         </div>
     </div>
-    <div class="w-1/3 p-4 flex flex-row">
+    <div class="w-full md:w-1/3 p-4 flex flex-row">
         <div class="w-1/2 pr-2">
             <h3 class="underline font-bold text-center underline-offset-7 pb-3">प्रवक्ता</h3>
             <img src="{{ asset('images/employee/bakhata.webp') }}" alt="Contact Person"
@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="w-1/3 p-4">
+    <div class="w-full md:w-1/3 p-4">
         <h3 class="underline underline-offset-7 pb-3 font-bold">महत्त्वपूर्ण लिङ्क</h3>
         <ul class="space-y-2">
             <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> कर्णाली प्रदेश
@@ -66,4 +66,3 @@
         पछिल्लो अपडेट गरिएको मिति: २०२५-०५-२८
     </div>
 </div>
-
