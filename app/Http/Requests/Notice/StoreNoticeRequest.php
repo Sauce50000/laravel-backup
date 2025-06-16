@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Notice;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateNoticeCategoryRequest extends FormRequest
+class StoreNoticeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,11 @@ class UpdateNoticeCategoryRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'title_en' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:notice_categories,slug',
+            'slug' => 'required|string|max:255|unique:notices,slug',
+            'published_date' => 'nullable|date',
+            'publisher' => 'required|string|max:255',
+            'notice_category_id' => 'required|exists:notice_categories,id',
+            'file_path' => 'required|file|mimes:pdf|max:10240', // 10MB max
         ];
     }
 }

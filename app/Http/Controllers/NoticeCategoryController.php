@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\NoticeCategory;
-use App\Http\Requests\StoreNoticeCategoryRequest;
-use App\Http\Requests\UpdateNoticeCategoryRequest;
+use App\Http\Requests\NoticeCategory\StoreNoticeCategoryRequest;
+use App\Http\Requests\NoticeCategory\UpdateNoticeCategoryRequest;
 use Illuminate\Http\Request;
 
 class NoticeCategoryController extends Controller
@@ -20,7 +20,7 @@ class NoticeCategoryController extends Controller
             ? NoticeCategory::withTrashed()->paginate(10)
             : NoticeCategory::paginate(10);
 
-        return view('backend.noticeCategory.index', compact('noticeCategories', 'showDeleted'));
+        return view('backend.noticeCategory.index', compact('noticeCategories','showDeleted'));
     }
 
     /**

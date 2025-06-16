@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class NoticeCategory extends Model
@@ -14,7 +15,7 @@ class NoticeCategory extends Model
         'title_en',
         'slug',
     ];
-    public function notices()
+    public function notices(): HasMany
     {
         return $this->hasMany(Notice::class);
     }

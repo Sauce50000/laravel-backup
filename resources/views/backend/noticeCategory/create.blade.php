@@ -14,7 +14,7 @@
                 <label for="title" class="block text-lg font-medium text-gray-700 mb-2">Title</label>
                 <input type="text" name="title" id="title" required value="{{ old('title') }}"
                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
-                    placeholder="Enter category title" onkeyup="generateSlug()">
+                    placeholder="Enter category title" >
             </div>
 
             <!-- Title (English) Field -->

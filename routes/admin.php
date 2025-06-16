@@ -16,4 +16,6 @@ Route::middleware(['auth'])->group(function () {
     // Restore route (using PUT or PATCH method)
     Route::put('notice-categories/{category}/restore', [NoticeCategoryController::class, 'restore'])
         ->name('notice-categories.restore');
+
+    
 });
