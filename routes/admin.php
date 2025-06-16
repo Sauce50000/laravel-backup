@@ -17,5 +17,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('notice-categories/{category}/restore', [NoticeCategoryController::class, 'restore'])
         ->name('notice-categories.restore');
 
-    
+    // Route::put('/notices/{notice}', [NoticeController::class, 'update'])->name('notices.update');
+Route::delete('notices/{notice}/force-delete', [NoticeController::class, 'forceDelete'])->name('notices.forceDelete');
+Route::patch('notices/{id}/restore', [NoticeController::class, 'restore'])->name('notices.restore');
+
 });

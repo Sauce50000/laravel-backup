@@ -195,7 +195,7 @@
 
                 {{-- suchana pati --}}
 
-                <div class="border border-gray-400 rounded px-4 py-2">
+                {{-- <div class="border border-gray-400 rounded px-4 py-2">
                     <h3 class="text-black m-1 font-bold">सूचना पाटि</h3>
                     <!-- Tab Navigation -->
                     <div class="flex flex-wrap justify-center" data-tabs-toggle="#notice-tab"
@@ -273,7 +273,63 @@
                         </div>
                     </div>
 
+                </div> --}}
+
+                {{-- with helper  --}}
+                <div class="border border-gray-400 rounded px-4 py-2">
+                    <h3 class="text-black m-1 font-bold">सूचना पाटि</h3>
+                    <!-- Tab Navigation -->
+                    @php
+                        $categories = \App\Helpers\NoticeHelper::getNoticeCategories();
+                    @endphp
+
+                    <div class="flex flex-wrap justify-center" data-tabs-toggle="#notice-tab"
+                        data-tabs-active-classes="text-white bg-red-500 dark:bg-red-800 border border-white"
+                        data-tabs-inactive-classes="text-white bg-[#004b8e] hover:bg-sky-500 dark:bg-[#004b8e] dark:hover:bg-sky-600 border border-transparent hover:border-white"
+                        role="tablist">
+                        @foreach ($categories as $i => $category)
+                            <button id="tab-{{ $category->id }}" type="button" role="tab"
+                                aria-controls="category-{{ $category->id }}"
+                                aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                                data-tabs-target="#category-{{ $category->id }}"
+                                class="flex-grow py-2 px-4 transition-colors">
+                                {{ $category->title }}
+                            </button>
+                        @endforeach
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div id="notice-tab">
+                        @foreach ($categories as $i => $category)
+                            <div id="category-{{ $category->id }}"
+                                class="{{ $i !== 0 ? 'hidden' : '' }} px-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
+                                role="tabpanel" aria-labelledby="tab-{{ $category->id }}">
+                                <ul class="list-disc list-inside mt-4 space-y-2">
+                                    @foreach ($category->notices()->latest()->take(5)->get() as $notice)
+                                        <li class="border-b border-gray-300 p-2 mb-2 w-full list-none">
+                                            <a href="{{ asset('storage/' . $notice->file_path) }}" target="_blank"
+                                                class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
+                                                <span class="flex items-center">
+                                                    <i class="fas fa-link text-blue-600 mr-2"></i> <!-- Link icon -->
+                                                    {{ $notice->title }}
+                                                </span>
+                                                <i class="fas fa-eye text-blue-600 ml-2"></i> <!-- Eye icon -->
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <div class="flex justify-end my-2 ">
+                                    <a href="#"
+                                        class="bg-blue-600 text-white text-xs px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                                        थप सामग्री
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
+
+
                 {{-- ऐन, नियम, निर्देशिका --}}
 
                 <div class="border border-gray-400 rounded px-4 py-2 mt-3">

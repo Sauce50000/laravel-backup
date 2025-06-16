@@ -7,7 +7,9 @@ use App\Models\NoticeCategory;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use App\Http\Requests\Notice\StoreNoticeRequest;
+use App\Http\Requests\Notice\UpdateNoticeRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
 {
@@ -19,8 +21,8 @@ class NoticeController extends Controller
         $showDeleted = $request->has('show_deleted');
 
         $notices = $showDeleted
-            ? Notice::withTrashed()->paginate(15)
-            : Notice::paginate(15);
+            ? Notice::latest()->withTrashed()->paginate(10)
+            : Notice::latest()->paginate(10);
 
         return view('backend.notice.index', compact('notices', 'showDeleted'));
     }
@@ -63,15 +65,26 @@ class NoticeController extends Controller
      */
     public function edit(Notice $notice)
     {
-        //
+        $categories = NoticeCategory::all();
+        return view('backend.notice.edit', compact('notice', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Notice $notice)
+    public function update(UpdateNoticeRequest $request, Notice $notice)
     {
-        //
+        $validated = $request->validated();
+
+        if ($request->hasFile('file_path')) {
+            // Handle file upload
+            $filename = Str::slug($validated['title_en']) . '-' . time() . '.' . $request->file('file_path')->getClientOriginalExtension();
+            $validated['file_path'] = $request->file('file_path')->storeAs('notices', $filename, 'public');
+        }
+
+        $notice->update($validated);
+
+        return redirect()->route('notices.index')->with('success', 'Notice updated successfully.');
     }
 
     /**
@@ -79,6 +92,29 @@ class NoticeController extends Controller
      */
     public function destroy(Notice $notice)
     {
-        //
+        $notice->delete(); // soft delete
+        return redirect()->route('notices.index')->with('success', 'Notice moved to trash.');
+    }
+
+    public function restore($id)
+    {
+        $notice = Notice::onlyTrashed()->findOrFail($id);
+        $notice->restore();
+
+        return redirect()->route('notices.index')->with('success', 'Notice restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        $notice = Notice::onlyTrashed()->findOrFail($id);
+
+        // Delete file from storage
+        if ($notice->file_path && Storage::disk('public')->exists($notice->file_path)) {
+            Storage::disk('public')->delete($notice->file_path);
+        }
+
+        $notice->forceDelete(); // permanently delete
+
+        return redirect()->route('notices.index')->with('success', 'Notice permanently deleted.');
     }
 }

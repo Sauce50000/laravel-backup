@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Notice;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateNoticeRequest extends FormRequest
 {
@@ -22,11 +23,18 @@ class UpdateNoticeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'title_en' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:notices,slug',
+            'title' => 'nullable|string|max:255',
+            'title_en' => 'nullable|string|max:255',
+            'slug' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('notices', 'slug')->ignore($this->notice->id),
+            ],
             'published_date' => 'nullable|date',
-            'publisher' => 'required|string|max:255',
+            'publisher' => 'nullable|string|max:255',
+            'notice_category_id' => 'nullable|exists:notice_categories,id',
+            'file_path' => 'nullable|file|mimes:pdf|max:10240', // Optional on update
         ];
     }
 }

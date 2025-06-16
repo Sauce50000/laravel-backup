@@ -19,39 +19,36 @@
             </label>
         </div>
 
-        <table class="w-full text-center border-collapse">
-            <thead class="bg-gray-200">
+        <table class="min-w-full divide-y divide-gray-200 text-sm">
+            <thead class="bg-gray-50">
                 <tr>
-                    <th class="py-2 px-4 border-b">SN</th>
-                    <th class="py-2 px-4 border-b">Title</th>
-                    <th class="py-2 px-4 border-b">Title (English)</th>
-                    <th class="py-2 px-4 border-b">Actions</th>
+                    <th class="px-4 py-3 text-left font-semibold text-gray-700">SN</th>
+                    <th class="px-4 py-3 text-left font-semibold text-gray-700">Title</th>
+                    <th class="px-4 py-3 text-left font-semibold text-gray-700">Title (English)</th>
+                    <th class="px-4 py-3 text-right font-semibold text-gray-700">Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($noticeCategories as $index => $category)
-                    {{-- <tr class="{{ $index % 2 == 0 ? 'bg-white' : 'bg-gray-100' }}"> --}}
-                    <tr class="{{ $category->deleted_at ? 'bg-red-300' : ($index % 2 == 0 ? 'bg-white' : 'bg-gray-100') }}">
-                        <td class="py-2 px-4 border-b">{{ $index + 1 }}</td>
-                        <td class="py-2 px-4 border-b">{{ $category->title }}</td>
-                        <td class="py-2 px-4 border-b">{{ $category->title_en }}</td>
-                        <td class="py-2 px-4 border-b flex justify-center space-x-2">
-                            <!-- Edit Button -->
-                            @if (!$category->deleted_at)
-                                <div class="group relative inline-block">
+            <tbody class="divide-y divide-gray-100">
+                @foreach ($noticeCategories as $category)
+                    <tr class="{{ $category->deleted_at ? 'bg-red-300' : 'bg-white' }}">
+                        <td class="px-4 py-2">{{ $loop->iteration }}</td>
+                        <td class="px-4 py-2">{{ $category->title }}</td>
+                        <td class="px-4 py-2">{{ $category->title_en }}</td>
+                        <td class="px-4 py-2 text-right space-x-2">
 
+                            @if (!$category->deleted_at)
+                                <!-- Edit Button -->
+                                <div class="group relative inline-block">
                                     <a href="{{ route('notice-categories.edit', $category->id) }}"
-                                        class="bg-amber-500 text-white py-1 px-2 rounded hover:bg-blue-600 transition duration-200 flex items-center space-x-1">
+                                        class="text-yellow-600 hover:underline flex items-center space-x-1">
                                         <i class="fas fa-edit"></i>
                                     </a>
-
                                     <span
                                         class="absolute hidden group-hover:block -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap">
                                         Edit
                                         <span
                                             class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></span>
                                     </span>
-
                                 </div>
 
                                 <!-- Delete Form -->
@@ -61,14 +58,13 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-900 transition duration-200 flex items-center space-x-1">
+                                            class="text-red-600 hover:underline flex items-center space-x-1">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                         <!-- Tooltip -->
                                         <span
                                             class="absolute hidden group-hover:block -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs py-1 px-2 rounded whitespace-nowrap">
                                             Delete
-                                            <!-- Optional tooltip arrow -->
                                             <span
                                                 class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></span>
                                         </span>
@@ -80,7 +76,7 @@
                                         @csrf
                                         @method('PUT')
                                         <button type="submit"
-                                            class="bg-green-500 text-white py-1 px-2 rounded hover:bg-green-700 transition duration-200 flex items-center space-x-1">
+                                            class="text-green-600 hover:underline flex items-center space-x-1">
                                             <i class="fas fa-trash-restore"></i>
                                         </button>
                                         <!-- Tooltip -->
