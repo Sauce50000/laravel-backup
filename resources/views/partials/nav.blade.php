@@ -3,9 +3,7 @@
     <nav class="flex gap-6 px-10">
         <a href="/" class=" hover:text-[#99f9d7] px-3 py-2 rounded">गृहपृष्ठ</a>
 
-        <div x-data="{ open: false }" class="relative" 
-            @mouseenter="open = true" 
-            @mouseleave="open = false">
+        <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
             <button @click="open = !open" @click.away="open = false"
                 class="hover:text-[#99f9d7] px-3 py-2 rounded inline-flex items-center">
                 हाम्रो बारेमा
@@ -24,9 +22,7 @@
             </div>
         </div>
 
-        <div x-data="{ open: false }" class="relative" 
-            @mouseenter="open = true" 
-            @mouseleave="open = false">
+        <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
             <button @click="open = !open" @click.away="open = false"
                 class="hover:text-[#99f9d7] px-3 py-2 rounded inline-flex items-center">
                 सूचना/समाचारहरु
@@ -35,18 +31,68 @@
             <!-- Dropdown items -->
             <div x-show="open" x-transition
                 class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
-                <a href="{{----}}" class="block px-4 py-2 text-md hover:bg-gray-200 ">परिपत्र/निर्देशन</a>
-                <a href="{{----}}" class="block px-4 py-2 text-md hover:bg-gray-200">सूचना तथा समाचारहरु</a>
+                <a href="{{-- --}}" class="block px-4 py-2 text-md hover:bg-gray-200 ">परिपत्र/निर्देशन</a>
+                <a href="{{-- --}}" class="block px-4 py-2 text-md hover:bg-gray-200">सूचना तथा
+                    समाचारहरु</a>
                 <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">प्रेस बिज्ञप्ति</a>
                 <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">बोलपत्र</a>
                 <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">अन्य</a>
             </div>
         </div>
 
-        <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded"></a>
-        <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">Projects</a>
-        <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">News</a>
-        <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">Events</a>
+        <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
+            <button @click="open = !open" @click.away="open = false"
+                class="hover:text-[#99f9d7] px-3 py-2 rounded inline-flex items-center">
+                अभिलेखहरु
+            </button>
+
+            <!-- Dropdown items -->
+            <div x-show="open" x-transition
+                class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
+
+                <div x-data="{ open: false }" class="relative group w-full" @mouseenter="open = true"
+                    @mouseleave="open = false">
+                    <button @click="open = !open" @click.away="open = false"
+                        class="w-full px-3 py-2 rounded hover:bg-gray-200 text-left flex justify-between items-center ">
+                        कानुनी दस्तावेज
+                    </button>
+
+                    <!-- Dropdown items -->
+                    <div x-show="open" x-transition
+                        class="absolute left-full top-0 ml-1 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40
+                            group-hover:left-full group-hover:top-0
+                            sm:left-0 sm:top-full sm:ml-0"
+                        :class="window.innerWidth - $el.getBoundingClientRect().right > 200 ? 'left-full top-0 ml-1' :
+                            'left-0 top-full ml-0'">
+                        <a href="{{-- --}}" class="block px-4 py-2 text-md hover:bg-gray-200 ">ऐन</a>
+                        <a href="{{-- --}}"
+                            class="block px-4 py-2 text-md hover:bg-gray-200">नियम/नियमावली</a>
+                        <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">निर्देशिका</a>
+                        <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">कार्यविधि</a>
+                        <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">मापदण्ड</a>
+                        <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">दस्तावेज</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
+            <button @click="open = !open" @click.away="open = false"
+                class="hover:text-[#99f9d7] px-3 py-2 rounded inline-flex items-center">
+                प्रकाशन
+            </button>
+
+            <!-- Dropdown items -->
+            <div x-show="open" x-transition
+                class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
+                <a href="{{-- --}}" class="block px-4 py-2 text-md hover:bg-gray-200 ">वार्षिक प्रगति विवरण</a>
+                <a href="{{-- --}}" class="block px-4 py-2 text-md hover:bg-gray-200">बार्षिक विकास कार्यक्रम</a>
+                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">मन्त्रिपरिषद्का निर्णयहरु</a>
+                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">अभीलेख</a>
+            </div>
+        </div>
+
         <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">Resources</a>
         <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">Gallery</a>
         <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">Contact</a>

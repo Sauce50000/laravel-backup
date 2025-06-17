@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\NoticeCategory;
+namespace App\Http\Requests\Record;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateNoticeCategoryRequest extends FormRequest
+class StoreRecordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,11 @@ class UpdateNoticeCategoryRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'title_en' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:notice_categories,slug'.
-                ($this->route('notice_category') ? ',' . $this->route('notice_category')->id : ''),
+            'publisher' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:records,slug',
+            'record_type_id' => 'required|exists:record_types,id',
+            'record_category_id' => 'required|exists:record_categories,id',
+            'file_path' => 'required|file|mimes:pdf|max:10240',
         ];
     }
 }

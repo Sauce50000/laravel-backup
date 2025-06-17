@@ -10,11 +10,11 @@
                     023-420022</a>
             </div>
             <div class="flex items-center gap-6">
-                <a href="#" class="text-blue-800 hover:text-red-600 border-r border-gray-400 pr-4"><i
+                <a href="{{route('login')}}" class="text-blue-800 hover:text-red-600 border-r border-gray-400 pr-4"><i
                         class="fa-solid fa-user"></i> लग इन</a>
-                <a href="#"
+                {{-- <a href="#"
                     class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 border-r border-gray-400 pr-4">English</a>
-                <div class="flex items-center gap-6">
+                <div class="flex items-center gap-6"> --}}
                     <a href="#" class="text-blue-800 hover:text-red-600 border-r border-gray-400 pr-4">
                         <i class="fab fa-facebook-f text-lg"></i>
                     </a>

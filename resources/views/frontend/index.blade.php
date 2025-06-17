@@ -191,92 +191,10 @@
         </div>
 
         <div class="flex flex-col md:flex-row w-full my-5 gap-4">
-            <div class="w-full lg:w-2/3 text-white">
+            <div class="w-full lg:w-2/3 text-white flex flex-col gap-4">
 
-                {{-- suchana pati --}}
-
-                {{-- <div class="border border-gray-400 rounded px-4 py-2">
-                    <h3 class="text-black m-1 font-bold">सूचना पाटि</h3>
-                    <!-- Tab Navigation -->
-                    <div class="flex flex-wrap justify-center" data-tabs-toggle="#notice-tab"
-                        data-tabs-active-classes="text-white bg-red-500 dark:bg-red-800 border border-white"
-                        data-tabs-inactive-classes="text-white bg-[#004b8e] hover:bg-sky-500 dark:bg-[#004b8e] dark:hover:bg-sky-600 border border-transparent hover:border-white"
-                        role="tablist">
-
-                        <button id="notice-and-news-tab" type="button" role="tab" aria-controls="notice-and-news"
-                            aria-selected="true" data-tabs-target="#notice-and-news"
-                            class="flex-grow py-2 px-4 transition-colors">
-                            सूचना तथा समाचारहरु
-                        </button>
-
-                        <button id="circular-tab" type="button" role="tab" aria-controls="circular"
-                            aria-selected="false" data-tabs-target="#circular"
-                            class="flex-grow py-2 px-4 transition-colors">
-                            परिपत्र/निर्देशन
-                        </button>
-
-                        <button id="press-release-tab" type="button" role="tab" aria-controls="press-release"
-                            aria-selected="false" data-tabs-target="#press-release"
-                            class="flex-grow py-2 px-4 transition-colors">
-                            प्रेस बिज्ञप्ति
-                        </button>
-
-                        <button id="tender-tab" type="button" role="tab" aria-controls="tender"
-                            aria-selected="false" data-tabs-target="#tender"
-                            class="flex-grow py-2 px-4 transition-colors">
-                            बोलपत्र
-                        </button>
-
-                        <button id="others-tab" type="button" role="tab" aria-controls="others"
-                            aria-selected="false" data-tabs-target="#others"
-                            class="flex-grow py-2 px-4 transition-colors">
-                            अन्य
-                        </button>
-                    </div>
-
-                    <!-- Tab Content -->
-                    <div id="notice-tab">
-                        <!-- Tab Panel 1 -->
-                        <div id="notice-and-news"
-                            class="p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="notice-and-news-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>सूचना तथा समाचारहरु</strong>.
-                            </p>
-                        </div>
-
-                        <!-- Tab Panel 2 -->
-                        <div id="circular"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="circular-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>परिपत्र/निर्देशन</strong>.</p>
-                        </div>
-
-                        <!-- Tab Panel 3 -->
-                        <div id="press-release"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="press-release-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>प्रेस बिज्ञप्ति</strong>.</p>
-                        </div>
-
-                        <!-- Tab Panel 4 -->
-                        <div id="tender"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="tender-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>बोलपत्र</strong>.</p>
-                        </div>
-
-                        <!-- Tab Panel 5 -->
-                        <div id="others"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="others-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>अन्य</strong>.</p>
-                        </div>
-                    </div>
-
-                </div> --}}
-
-                {{-- with helper  --}}
-                <div class="border border-gray-400 rounded px-4 py-2">
+                <!-- Notices Section -->
+                <div class="border  border-gray-400 rounded px-4 py-2">
                     <h3 class="text-black m-1 font-bold">सूचना पाटि</h3>
                     <!-- Tab Navigation -->
                     @php
@@ -288,10 +206,10 @@
                         data-tabs-inactive-classes="text-white bg-[#004b8e] hover:bg-sky-500 dark:bg-[#004b8e] dark:hover:bg-sky-600 border border-transparent hover:border-white"
                         role="tablist">
                         @foreach ($categories as $i => $category)
-                            <button id="tab-{{ $category->id }}" type="button" role="tab"
-                                aria-controls="category-{{ $category->id }}"
+                            <button id="notice-tab-{{ $category->id }}" type="button" role="tab"
+                                aria-controls="notice-category-{{ $category->id }}"
                                 aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
-                                data-tabs-target="#category-{{ $category->id }}"
+                                data-tabs-target="#notice-category-{{ $category->id }}"
                                 class="flex-grow py-2 px-4 transition-colors">
                                 {{ $category->title }}
                             </button>
@@ -301,11 +219,11 @@
                     <!-- Tab Content -->
                     <div id="notice-tab">
                         @foreach ($categories as $i => $category)
-                            <div id="category-{{ $category->id }}"
+                            <div id="notice-category-{{ $category->id }}"
                                 class="{{ $i !== 0 ? 'hidden' : '' }} px-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                                role="tabpanel" aria-labelledby="tab-{{ $category->id }}">
+                                role="tabpanel" aria-labelledby="notice-tab-{{ $category->id }}">
                                 <ul class="list-disc list-inside mt-4 space-y-2">
-                                    @foreach ($category->notices()->latest()->take(5)->get() as $notice)
+                                    @foreach ($category->notices()->latest()->take(3)->get() as $notice)
                                         <li class="border-b border-gray-300 p-2 mb-2 w-full list-none">
                                             <a href="{{ asset('storage/' . $notice->file_path) }}" target="_blank"
                                                 class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
@@ -318,7 +236,7 @@
                                         </li>
                                     @endforeach
                                 </ul>
-                                <div class="flex justify-end my-2 ">
+                                <div class="flex justify-end my-2">
                                     <a href="#"
                                         class="bg-blue-600 text-white text-xs px-4 py-2 rounded hover:bg-blue-700 transition-colors">
                                         थप सामग्री
@@ -329,95 +247,60 @@
                     </div>
                 </div>
 
-
-                {{-- ऐन, नियम, निर्देशिका --}}
-
-                <div class="border border-gray-400 rounded px-4 py-2 mt-3">
+                <!-- Records Section -->
+                <div class="border border-gray-400 rounded px-4 py-2">
                     <h3 class="text-black m-1 font-bold">ऐन, नियम, निर्देशिका</h3>
                     <!-- Tab Navigation -->
-                    <div class="flex flex-wrap justify-center" data-tabs-toggle="#notice-tab2"
+                    @php
+                        $recordCategories = \App\Helpers\NoticeHelper::getRecordCategoriesForLegalDocuments();
+                    @endphp
+
+                    <div class="flex flex-wrap justify-center" data-tabs-toggle="#record-tab"
                         data-tabs-active-classes="text-white bg-red-500 dark:bg-red-800 border border-white"
                         data-tabs-inactive-classes="text-white bg-[#004b8e] hover:bg-sky-500 dark:bg-[#004b8e] dark:hover:bg-sky-600 border border-transparent hover:border-white"
                         role="tablist">
-
-                        <button type="button" role="tab" id="procedure-tab" data-tabs-target="#procedure"
-                            aria-controls="procedure" aria-selected="true" class="flex-grow py-2 px-4 transition-colors">
-                            कार्यविधि
-                        </button>
-                        <button type="button" role="tab" id="document-tab" data-tabs-target="#document"
-                            aria-controls="document" aria-selected="false" class="flex-grow py-2 px-4 transition-colors">
-                            दस्तावेज
-                        </button>
-                        <button type="button" role="tab" id="guideline-tab" data-tabs-target="#guideline"
-                            aria-controls="guideline" aria-selected="false"
-                            class="flex-grow py-2 px-4 transition-colors">
-                            निर्देशिका
-                        </button>
-                        <button type="button" role="tab" id="strategy-tab" data-tabs-target="#strategy"
-                            aria-controls="strategy" aria-selected="false" class="flex-grow py-2 px-4 transition-colors">
-                            कृषि विकास रणनीति
-                        </button>
-                        <button type="button" role="tab" id="standard-tab" data-tabs-target="#standard"
-                            aria-controls="standard" aria-selected="false" class="flex-grow py-2 px-4 transition-colors">
-                            मापदण्ड
-                        </button>
-                        <button type="button" role="tab" id="act-tab" data-tabs-target="#act"
-                            aria-controls="act" aria-selected="false" class="flex-grow py-2 px-4 transition-colors">
-                            ऐन
-                        </button>
-                        <button type="button" role="tab" id="rule-tab" data-tabs-target="#rule"
-                            aria-controls="rule" aria-selected="false" class="flex-grow py-2 px-4 transition-colors">
-                            नियम/नियमावली
-                        </button>
+                        @foreach ($recordCategories as $i => $recordCategory)
+                            <button id="record-tab-{{ $recordCategory->id }}" type="button" role="tab"
+                                aria-controls="record-category-{{ $recordCategory->id }}"
+                                aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                                data-tabs-target="#record-category-{{ $recordCategory->id }}"
+                                class="flex-grow py-2 px-4 transition-colors">
+                                {{ $recordCategory->title }}
+                            </button>
+                        @endforeach
                     </div>
 
-                    <!-- Tab Panels -->
-                    <div id="notice-tab2">
-
-                        <div id="procedure"
-                            class="p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="procedure-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>कार्यविधि</strong>.</p>
-                        </div>
-
-                        <div id="document"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="document-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>दस्तावेज</strong>.</p>
-                        </div>
-
-                        <div id="guideline"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="guideline-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>निर्देशिका</strong>.</p>
-                        </div>
-
-                        <div id="strategy"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="strategy-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>कृषि विकास रणनीति</strong>.</p>
-                        </div>
-
-                        <div id="standard"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="standard-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>मापदण्ड</strong>.</p>
-                        </div>
-
-                        <div id="act"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="act-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>ऐन</strong>.</p>
-                        </div>
-
-                        <div id="rule"
-                            class="hidden p-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
-                            role="tabpanel" aria-labelledby="rule-tab">
-                            <p class="text-sm">This is some placeholder content for <strong>नियम/नियमावली</strong>.</p>
-                        </div>
-
+                    <!-- Tab Content -->
+                    <div id="record-tab">
+                        @foreach ($recordCategories as $i => $recordCategory)
+                            <div id="record-category-{{ $recordCategory->id }}"
+                                class="{{ $i !== 0 ? 'hidden' : '' }} px-4 border border-gray-300 rounded-b-lg text-black dark:text-white dark:border-gray-700"
+                                role="tabpanel" aria-labelledby="record-tab-{{ $recordCategory->id }}">
+                                <ul class="list-disc list-inside mt-4 space-y-2">
+                                    @foreach ($recordCategory->records()->latest()->take(3)->get() as $record)
+                                        <li class="border-b border-gray-300 p-2 mb-2 w-full list-none">
+                                            <a href="{{ asset('storage/' . $record->file_path) }}" target="_blank"
+                                                class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
+                                                <span class="flex items-center">
+                                                    <i class="fas fa-link text-blue-600 mr-2"></i> <!-- Link icon -->
+                                                    {{ $record->title }}
+                                                </span>
+                                                <i class="fas fa-eye text-blue-600 ml-2"></i> <!-- Eye icon -->
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <div class="flex justify-end my-2">
+                                    <a href="#"
+                                        class="bg-blue-600 text-white text-xs px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                                        थप सामग्री
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
+
             </div>
             <div class="w-full lg:w-1/3 ">
                 <div class="max-w-xl mx-auto border border-gray-400 rounded px-4">
@@ -518,8 +401,10 @@
 
         <!--Photo Gallery-->
         <div class="my-5">
+            {{-- 
             <h1 class="text-3xl font-bold text-center underline pt-5">फोटो ग्यालेरी</h1>
             <h1>SLIDER WILL BE MADE HERE</h1>
+             --}}
 
             <div class="grid sm:grid-cols-3 lg:grid-cols-6 gap-1">
                 <div class="bg-[#008cba] hover:bg-red-600 text-white py-6 shadow">

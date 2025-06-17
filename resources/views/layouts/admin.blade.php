@@ -82,7 +82,7 @@
                 </li>
 
                 <!-- Notice & News Dropdown -->
-                <li>
+                <li x-data="{ open: false }">
                     <button @click="open = !open"
                         class="w-full text-left flex items-center justify-between py-2 px-4 rounded hover:bg-gray-100">
                         Notice and News
@@ -102,6 +102,41 @@
                             <a href="{{ route('notice-categories.index') }}"
                                 class="block py-1 px-2 rounded hover:bg-gray-100 {{ request()->routeIs('notice-categories.*') ? 'bg-blue-50 text-blue-600' : '' }}">
                                 Notice Categories
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Records Dropdown -->
+                <li x-data="{ open: false }">
+                    <button @click="open = !open"
+                        class="w-full text-left flex items-center justify-between py-2 px-4 rounded hover:bg-gray-100">
+                        Records
+                        <svg class="w-4 h-4 transform transition-transform" :class="open ? 'rotate-180' : ''"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <ul x-show="open" x-collapse class="pl-6 space-y-1 mt-1 text-sm text-gray-700">
+                        <!-- All Records -->
+                        <li>
+                            <a href="{{ route('records.index') }}"
+                                class="block py-1 px-2 rounded hover:bg-gray-100 {{ request()->routeIs('records.*') && !request()->routeIs('record-types.*', 'record-categories.*') ? 'bg-blue-50 text-blue-600' : '' }}">
+                                All Records
+                            </a>
+                        </li>
+                        <!-- Record Types -->
+                        <li>
+                            <a href="{{ route('record-types.index') }}"
+                                class="block py-1 px-2 rounded hover:bg-gray-100 {{ request()->routeIs('record-types.*') ? 'bg-blue-50 text-blue-600' : '' }}">
+                                Record Types
+                            </a>
+                        </li>
+                        <!-- Record Categories -->
+                        <li>
+                            <a href="{{ route('record-categories.index') }}"
+                                class="block py-1 px-2 rounded hover:bg-gray-100 {{ request()->routeIs('record-categories.*') ? 'bg-blue-50 text-blue-600' : '' }}">
+                                Record Categories
                             </a>
                         </li>
                     </ul>

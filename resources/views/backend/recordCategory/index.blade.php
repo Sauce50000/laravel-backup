@@ -1,15 +1,15 @@
 @extends('layouts.admin')
-@section('title', 'NoticeCategory List')
+@section('title', 'RecordCategory List')
 
 @section('content')
     <div class="container mx-auto py-6">
         <div class="flex justify-between items-center mb-4">
-            <h2 class="text-2xl font-semibold text-gray-700">Notice Categories</h2>
-            
+            <h2 class="text-2xl font-semibold text-gray-700">Record Categories</h2>
+
         </div>
         <div class="flex justify-between items-center mb-6">
             <!-- Styled Button at Top Left -->
-            <a href="{{ route('notice-categories.create') }}"
+            <a href="{{ route('record-categories.create') }}"
                 class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out shadow-md">
                 + Add New Category
             </a>
@@ -33,7 +33,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                @foreach ($noticeCategories as $category)
+                @foreach ($recordCategories as $category)
                     <tr class="{{ $category->deleted_at ? 'bg-red-300' : 'bg-white' }}">
                         <td class="px-4 py-2">{{ $loop->iteration }}</td>
                         <td class="px-4 py-2">{{ $category->title }}</td>
@@ -43,7 +43,7 @@
                             @if (!$category->deleted_at)
                                 <!-- Edit Button -->
                                 <div class="group relative inline-block">
-                                    <a href="{{ route('notice-categories.edit', $category->id) }}"
+                                    <a href="{{ route('record-categories.edit', $category->id) }}"
                                         class="text-yellow-600 hover:underline flex items-center space-x-1">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -57,7 +57,7 @@
 
                                 <!-- Delete Form -->
                                 <div class="group relative inline-block">
-                                    <form action="{{ route('notice-categories.destroy', $category->id) }}" method="POST"
+                                    <form action="{{ route('record-categories.destroy', $category->id) }}" method="POST"
                                         onsubmit="return confirm('Are you sure you want to delete this category?');">
                                         @csrf
                                         @method('DELETE')
@@ -76,7 +76,7 @@
                                 </div>
                             @else
                                 <div class="group relative inline-block">
-                                    <form action="{{ route('notice-categories.restore', $category->id) }}" method="POST">
+                                    <form action="{{ route('record-categories.restore', $category->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <button type="submit"
@@ -101,7 +101,7 @@
 
         <!-- Pagination Links -->
         <div class="mt-4">
-            {{ $noticeCategories->links() }}
+            {{ $recordCategories->links() }}
         </div>
     </div>
 
@@ -118,4 +118,7 @@
             });
         </script>
     @endpush
+
+
+    
 @endsection
