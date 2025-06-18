@@ -6,6 +6,8 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\RecordTypeController;
 use App\Http\Controllers\RecordCategoryController;
+use App\Http\Controllers\PhotoGalleryController;
+use App\Http\Controllers\PhotoController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
@@ -37,4 +39,15 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('records/{record}/force-delete', [RecordController::class, 'forceDelete'])->name('records.forceDelete');
     Route::patch('records/{id}/restore', [RecordController::class, 'restore'])->name('records.restore');
     //Route::patch('records/{record}/restore', [RecordController::class, 'restore'])->name('records.restore');
+
+    Route::resource('photos-galleries', PhotoGalleryController::class);
+    // Route::delete('/photos-galleries/{photos_gallery}/photos/{photo}', [PhotoGalleryController::class, 'destroy'])
+    // ->name('photos-galleries.photos.destroy');
+
+    // Nested route for photos under a specific gallery
+    Route::prefix('photos-galleries/{photoGallery}')->group(function () {
+        Route::delete('photos/{photo}', [PhotoController::class, 'destroy'])->name('photos-galleries.photos.destroy');
+    });
+    //
+
 });

@@ -143,7 +143,7 @@
                 </li>
 
                 <!-- Other Menu Items -->
-                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-100">Posts</a></li>
+                <li><a href="{{ route('photos-galleries.index') }}" class="block py-2 px-4 rounded hover:bg-gray-100">Gallery</a></li>
                 <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-100">Reports</a></li>
             </ul>
         </aside>
