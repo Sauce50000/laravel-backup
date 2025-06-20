@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class DepartmentController extends Controller
 {
@@ -32,6 +33,9 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+
+        $slug = Str::slug($request->title_en);
+
         $request->validate([
             'title' => 'required|string|max:255',
             'title_en' => 'required|string|max:255',
@@ -39,10 +43,14 @@ class DepartmentController extends Controller
             'slug' => 'nullable|string|max:255|unique:departments,slug',
         ]);
 
-        Department::create($request->all());
+        $data = $request->all();
+        $data['slug'] = $slug;
+
+        Department::create($data);
 
         return redirect()->route('departments.index')->with('success', 'Department created successfully.');
     }
+
 
     /**
      * Display the specified resource.
@@ -57,7 +65,8 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        $edit = true;
+        return view('backend.department.create', compact('department', 'edit'));
     }
 
     /**
@@ -65,7 +74,23 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, Department $department)
     {
-        //
+
+
+        ///$slug = Str::slug($request->title_en);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'title_en' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'slug' => 'nullable|string|max:255|unique:departments,slug',
+        ]);
+
+        //$data = $request->all();
+        //$data['slug'] = $slug;
+
+        Department::create($request->all());
+
+        return redirect()->route('departments.index')->with('success', 'Department created successfully.');
     }
 
     /**
@@ -73,6 +98,18 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+        return redirect()->route('departments.index')->with('success', 'Department deleted successfully.');
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        $department = Department::onlyTrashed()->findOrFail($id);
+        $department->restore();
+
+        return redirect()->route('departments.index')->with('success', 'Department restored successfully.');
     }
 }

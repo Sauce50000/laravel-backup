@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('records/{id}/restore', [RecordController::class, 'restore'])->name('records.restore');
     //Route::patch('records/{record}/restore', [RecordController::class, 'restore'])->name('records.restore');
 
-    
+
     // Route::delete('/photos-galleries/{photos_gallery}/photos/{photo}', [PhotoGalleryController::class, 'destroy'])
     // ->name('photos-galleries.photos.destroy');
 
@@ -53,5 +53,11 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('photos/{photo}', [PhotoController::class, 'destroy'])->name('photos-galleries.photos.destroy');
     });
     //
-    
+
+
+    Route::get('/departments/{department:slug}/edit', [DepartmentController::class, 'edit'])->name('departments.edit');
+    Route::put('departments/{id}/restore', [DepartmentController::class, 'restore'])->name('departments.restore');
+    // Route::put('/departments/{department:slug}', ...);       // update
+    // Route::delete('/departments/{department:slug}', ...);    // destroy
+
 });

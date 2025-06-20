@@ -91,7 +91,7 @@
                             @if (!$department->deleted_at)
                                 <!-- Edit Button -->
                                 <div class="group relative inline-block">
-                                    <a href="{{ route('departments.edit', $department->id) }}"
+                                    <a href="{{ route('departments.edit', $department->slug) }}"
                                         class="text-yellow-600 hover:underline flex items-center space-x-1">
                                         <i class="fas fa-edit"></i>
                                     </a>
@@ -124,8 +124,7 @@
                                 </div>
                             @else
                                 <div class="group relative inline-block">
-                                    <p>:o</p>
-                                    {{-- <form action="{{ route('departments.restore', $department->id) }}" method="POST">
+                                    <form action="{{ route('departments.restore', $department->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
                                         <button type="submit"
@@ -139,7 +138,7 @@
                                             <span
                                                 class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></span>
                                         </span>
-                                    </form> --}}
+                                    </form>
                                 </div>
                             @endif
                         </td>
