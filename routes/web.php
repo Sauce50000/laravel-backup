@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\NoticeController;
 
 
 // Route::get('/', function () {
@@ -18,3 +19,4 @@ Route::get('/work-area', [FrontendController::class, 'workArea'])->name('work-ar
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/notices/{slug}', [NoticeController::class, 'showByCategory'])->name('notices.category');

@@ -8,6 +8,7 @@ use App\Http\Controllers\RecordTypeController;
 use App\Http\Controllers\RecordCategoryController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\DepartmentController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
@@ -17,6 +18,11 @@ Route::middleware(['auth'])->group(function () {
     // more admin routes here
     Route::resource('notice-categories', NoticeCategoryController::class);
     Route::resource('notices', NoticeController::class);
+    Route::resource('record-categories', RecordCategoryController::class);
+    Route::resource('records', RecordController::class);
+    Route::resource('record-types', RecordTypeController::class);
+    Route::resource('photos-galleries', PhotoGalleryController::class);
+    Route::resource('departments', DepartmentController::class);
 
     // Restore route (using PUT or PATCH method)
     Route::put('notice-categories/{category}/restore', [NoticeCategoryController::class, 'restore'])
@@ -27,9 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('notices/{id}/restore', [NoticeController::class, 'restore'])->name('notices.restore');
 
 
-    Route::resource('record-categories', RecordCategoryController::class);
-    Route::resource('records', RecordController::class);
-    Route::resource('record-types', RecordTypeController::class);
+
 
     Route::put('record-types/{type}/restore', [RecordTypeController::class, 'restore'])
         ->name('record-types.restore');
@@ -40,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('records/{id}/restore', [RecordController::class, 'restore'])->name('records.restore');
     //Route::patch('records/{record}/restore', [RecordController::class, 'restore'])->name('records.restore');
 
-    Route::resource('photos-galleries', PhotoGalleryController::class);
+    
     // Route::delete('/photos-galleries/{photos_gallery}/photos/{photo}', [PhotoGalleryController::class, 'destroy'])
     // ->name('photos-galleries.photos.destroy');
 
@@ -49,5 +53,5 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('photos/{photo}', [PhotoController::class, 'destroy'])->name('photos-galleries.photos.destroy');
     });
     //
-
+    
 });

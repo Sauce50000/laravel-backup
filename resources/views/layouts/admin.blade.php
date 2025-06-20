@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    @stack('head')
 </head>
 
 <body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
@@ -143,8 +144,10 @@
                 </li>
 
                 <!-- Other Menu Items -->
-                <li><a href="{{ route('photos-galleries.index') }}" class="block py-2 px-4 rounded hover:bg-gray-100">Gallery</a></li>
-                <li><a href="#" class="block py-2 px-4 rounded hover:bg-gray-100">Reports</a></li>
+                <li><a href="{{ route('photos-galleries.index') }}"
+                        class="block py-2 px-4 rounded hover:bg-gray-100">Gallery</a></li>
+                <li><a href="{{ route('departments.index') }}"
+                        class="block py-2 px-4 rounded hover:bg-gray-100">Department</a></li>
             </ul>
         </aside>
 

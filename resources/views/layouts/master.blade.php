@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>master.test | @yield('title')</title>
+    <title>MOLMAC | @yield('title')</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     {{-- @vite('resources/css/app.css') --}}
@@ -13,6 +13,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('styles')
+
+    <style>
+        a:not([class]) {
+            color: rgb(15, 132, 190);
+        }
+
+        a:not([class]):hover {
+            color: rgb(245, 41, 65);
+        }
+    </style>
+
 
 </head>
 
@@ -42,4 +53,3 @@
 </body>
 
 </html>
-

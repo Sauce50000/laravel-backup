@@ -26,74 +26,76 @@
 
         <div class="text-white flex flex-wrap mt-2">
 
-            <div class="w-full md:w-1/3 lg:w-1/4">
-                <!-- Tab Navigation (Custom Styling) -->
-                <div class="flex flex-wrap justify-center" data-tabs-toggle="#quick-tab-content"
-                    data-tabs-active-classes="text-white bg-red-500 dark:bg-red-800"
-                    data-tabs-inactive-classes="text-white bg-[#004b8e] hover:bg-sky-500 dark:text-white dark:bg-[#004b8e] dark:hover:bg-sky-600 border border-transparent hover:border-white"
-                    role="tablist">
-                    <button id="annual-plan-tab" type="button" role="tab" aria-controls="annual-plan-content"
-                        aria-selected="true" data-tabs-target="#annual-plan-content"
-                        class="flex-grow py-2 px-4 transition-colors">
-                        वार्षिक विकास कार्यक्रम
-                    </button>
+            <div class="w-full md:w-1/3 lg:w-1/4 ">
+                <div class="shadow-md">
+                    <!-- Tab Navigation (Custom Styling) -->
+                    <div class="flex flex-wrap justify-center" data-tabs-toggle="#quick-tab-content"
+                        data-tabs-active-classes="text-white bg-red-500 dark:bg-red-800"
+                        data-tabs-inactive-classes="text-white bg-[#004b8e] hover:bg-sky-500 dark:text-white dark:bg-[#004b8e] dark:hover:bg-sky-600 border border-transparent hover:border-white"
+                        role="tablist">
+                        <button id="annual-plan-tab" type="button" role="tab" aria-controls="annual-plan-content"
+                            aria-selected="true" data-tabs-target="#annual-plan-content"
+                            class="flex-grow py-2 px-4 transition-colors">
+                            वार्षिक विकास कार्यक्रम
+                        </button>
 
-                    <button id="news-updates-tab" type="button" role="tab" aria-controls="news-updates-content"
-                        aria-selected="false" data-tabs-target="#news-updates-content"
-                        class="flex-grow py-2 px-4 transition-colors">
-                        सूचना तथा समाचारहरु
-                    </button>
+                        <button id="news-updates-tab" type="button" role="tab" aria-controls="news-updates-content"
+                            aria-selected="false" data-tabs-target="#news-updates-content"
+                            class="flex-grow py-2 px-4 transition-colors">
+                            सूचना तथा समाचारहरु
+                        </button>
 
-                    <button id="circulars-tab" type="button" role="tab" aria-controls="circulars-content"
-                        aria-selected="false" data-tabs-target="#circulars-content"
-                        class="flex-grow py-2 px-4 transition-colors">
-                        परिपत्र/निर्देशन
-                    </button>
-                </div>
-
-                <!-- Tab Contents -->
-                <div id="quick-tab-content">
-                    <!-- वार्षिक विकास कार्यक्रम -->
-                    <div id="annual-plan-content" class="p-4 border border-gray-300 rounded-b-lg text-black "
-                        role="tabpanel" aria-labelledby="annual-plan-tab">
-                        <p class="text-sm">
-                            This is some placeholder content for the
-                            <strong class="font-medium">
-                                वार्षिक विकास कार्यक्रम
-                            </strong>
-                            section.
-                        </p>
+                        <button id="circulars-tab" type="button" role="tab" aria-controls="circulars-content"
+                            aria-selected="false" data-tabs-target="#circulars-content"
+                            class="flex-grow py-2 px-4 transition-colors">
+                            परिपत्र/निर्देशन
+                        </button>
                     </div>
 
-                    <!-- सूचना तथा समाचारहरु -->
-                    <div id="news-updates-content" class="hidden p-4 border border-gray-300 rounded-b-lg text-black "
-                        role="tabpanel" aria-labelledby="news-updates-tab">
-                        <p class="text-sm">
-                            This is some placeholder content for the
-                            <strong class="font-medium">
-                                सूचना तथा समाचारहरु
-                            </strong>
-                            section.
-                        </p>
-                    </div>
+                    <!-- Tab Contents -->
+                    <div id="quick-tab-content">
+                        <!-- वार्षिक विकास कार्यक्रम -->
+                        <div id="annual-plan-content" class="p-4 border border-gray-300 rounded-b-lg text-black "
+                            role="tabpanel" aria-labelledby="annual-plan-tab">
+                            <p class="text-sm">
+                                This is some placeholder content for the
+                                <strong class="font-medium">
+                                    वार्षिक विकास कार्यक्रम
+                                </strong>
+                                section.
+                            </p>
+                        </div>
 
-                    <!-- परिपत्र/निर्देशन -->
-                    <div id="circulars-content" class="hidden p-4 border border-gray-300 rounded-b-lg text-black "
-                        role="tabpanel" aria-labelledby="circulars-tab">
-                        <p class="text-sm">
-                            This is some placeholder content for the
-                            <strong class="font-medium">
-                                परिपत्र/निर्देशन
-                            </strong>
-                            section.
-                        </p>
+                        <!-- सूचना तथा समाचारहरु -->
+                        <div id="news-updates-content" class="hidden p-4 border border-gray-300 rounded-b-lg text-black "
+                            role="tabpanel" aria-labelledby="news-updates-tab">
+                            <p class="text-sm">
+                                This is some placeholder content for the
+                                <strong class="font-medium">
+                                    सूचना तथा समाचारहरु
+                                </strong>
+                                section.
+                            </p>
+                        </div>
+
+                        <!-- परिपत्र/निर्देशन -->
+                        <div id="circulars-content" class="hidden p-4 border border-gray-300 rounded-b-lg text-black "
+                            role="tabpanel" aria-labelledby="circulars-tab">
+                            <p class="text-sm">
+                                This is some placeholder content for the
+                                <strong class="font-medium">
+                                    परिपत्र/निर्देशन
+                                </strong>
+                                section.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="w-full md:w-2/3 lg:w-2/4 px-4 ">
 
                 <!--Slider-->
-                <div id="default-carousel" class="relative w-full" data-carousel="slide">
+                {{-- <div id="default-carousel" class="relative w-full" data-carousel="slide">
                     <!-- Carousel wrapper -->
                     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                         <!-- Item 1 -->
@@ -152,38 +154,89 @@
                             <span class="sr-only">Next</span>
                         </span>
                     </button>
+                </div> --}}
+
+                <div id="default-carousel" class="relative w-full shadow-mg" data-carousel="slide">
+                    <!-- Carousel wrapper -->
+                    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                        @foreach ($photos as $index => $photo)
+                            <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-700 ease-in-out"
+                                data-carousel-item>
+                                <img src="{{ asset('storage/' . $photo->image_path) }}"
+                                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                    alt="Gallery Photo">
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Slider indicators -->
+                    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                        @foreach ($photos as $index => $photo)
+                            <button type="button" class="w-3 h-3 rounded-full"
+                                aria-current="{{ $index === 0 ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"
+                                data-carousel-slide-to="{{ $index }}"></button>
+                        @endforeach
+                    </div>
+
+                    <!-- Slider controls -->
+                    <button type="button"
+                        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                        data-carousel-prev>
+                        <span
+                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 1 1 5l4 4" />
+                            </svg>
+                            <span class="sr-only">Previous</span>
+                        </span>
+                    </button>
+                    <button type="button"
+                        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                        data-carousel-next>
+                        <span
+                            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 9 4-4-4-4" />
+                            </svg>
+                            <span class="sr-only">Next</span>
+                        </span>
+                    </button>
                 </div>
 
 
             </div>
-            <div class="w-full  lg:w-1/4 p-4  bg-white">
-                <div class="space-y-4 shadow-lg rounded-lg">
+            <div class="w-full lg:w-1/4">
+                <div
+                    class="space-y-6 bg-gradient-to-br from-blue-50 to-white shadow-md rounded-2xl p-6 border border-gray-100">
                     <!-- Card 1 -->
-                    <div class="flex items-center">
-                        <div class="w-1/3 flex justify-center">
-                            <img src="{{ asset('images/employee/tara.webp') }}" alt="Card Image"
-                                class="w-24 h-24 object-cover rounded-full border border-gray-200">
+                    <div class="flex items-center gap-4">
+                        <div class="flex-shrink-0">
+                            <img src="{{ asset('images/employee/विनोदकुमार शाह.webp') }}" alt="विनोदकुमार शाह"
+                                class="w-20 h-20 object-cover rounded-full border-4 border-blue-200 shadow-md">
                         </div>
-                        <div class="w-2/3 px-4">
-                            <p class="text-gray-800 font-medium mb-1">Name</p>
-                            <p class="text-red-500 mb-3">This is a brief description</p>
-                            <a href="#" class="text-blue-700 hover:text-red-500">More</a>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-900">विनोदकुमार शाह</p>
+                            <p class="text-blue-600 font-medium">माननीय मन्त्री</p>
+                            {{-- <a href="#" class="text-blue-500 hover:text-red-500 text-sm mt-1 inline-block">थप जानकारी</a> --}}
                         </div>
                     </div>
 
-                    <!-- Divider -->
-                    <hr class="border-gray-300">
+                    <div class="border-t border-dashed border-gray-300"></div>
 
                     <!-- Card 2 -->
-                    <div class="flex items-center">
-                        <div class="w-1/3 flex justify-center">
-                            <img src="{{ asset('images/employee/bakhata.webp') }}" alt="Card Image"
-                                class="w-24 h-24 object-cover rounded-full border border-gray-200">
+                    <div class="flex items-center gap-4">
+                        <div class="flex-shrink-0">
+                            <img src="{{ asset('images/employee/परशुराम रावत.webp') }}" alt="परशुराम रावत"
+                                class="w-20 h-20 object-cover rounded-full border-4 border-blue-200 shadow-md">
                         </div>
-                        <div class="w-2/3 px-4">
-                            <p class="text-gray-800 font-medium mb-1">Name</p>
-                            <p class="text-red-500 mb-3">This is a brief description</p>
-                            <a href="#" class="text-blue-700 hover:text-red-500">More</a>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-900">परशुराम रावत</p>
+                            <p class="text-blue-600 font-medium">का.मु. सचिव</p>
+                            {{-- <a href="#" class="text-blue-500 hover:text-red-500 text-sm mt-1 inline-block">थप जानकारी</a> --}}
                         </div>
                     </div>
                 </div>
@@ -194,7 +247,7 @@
             <div class="w-full lg:w-2/3 text-white flex flex-col gap-4">
 
                 <!-- Notices Section -->
-                <div class="border  border-gray-400 rounded px-4 py-2">
+                <div class="border  border-gray-400 rounded px-4 py-2 shadow-md">
                     <h3 class="text-black m-1 font-bold">सूचना पाटि</h3>
                     <!-- Tab Navigation -->
                     @php
@@ -248,7 +301,7 @@
                 </div>
 
                 <!-- Records Section -->
-                <div class="border border-gray-400 rounded px-4 py-2">
+                <div class="border border-gray-400 rounded px-4 py-2 shadow-md">
                     <h3 class="text-black m-1 font-bold">ऐन, नियम, निर्देशिका</h3>
                     <!-- Tab Navigation -->
                     @php
@@ -303,7 +356,7 @@
 
             </div>
             <div class="w-full lg:w-1/3 ">
-                <div class="max-w-xl mx-auto border border-gray-400 rounded px-4">
+                <div class="max-w-xl mx-auto border border-gray-400 rounded px-4 shadow-md">
                     <h3 class="text-black my-1 font-bold">परिचय</h3>
                     <div id="collapseText" class="overflow-hidden transition-all duration-300 max-h-18">
                         <p class="text-gray-800">
