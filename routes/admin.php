@@ -9,6 +9,7 @@ use App\Http\Controllers\RecordCategoryController;
 use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\AboutUsController;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
@@ -23,6 +24,15 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('record-types', RecordTypeController::class);
     Route::resource('photos-galleries', PhotoGalleryController::class);
     Route::resource('departments', DepartmentController::class);
+    Route::resource('office-details', \App\Http\Controllers\OfficeDetailController::class);
+    Route::resource('posts', \App\Http\Controllers\PostController::class);
+    Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
+    Route::resource('about-us', AboutUsController::class);
+
+    // Route::resource('admin/about-us', AboutUsController::class)
+    // ->names('about-us')  // optional, makes route names like about-us.index
+    // ->parameters(['about-us' => 'about_us']); // makes {about_us} use model binding
+
 
     // Restore route (using PUT or PATCH method)
     Route::put('notice-categories/{category}/restore', [NoticeCategoryController::class, 'restore'])
@@ -59,5 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('departments/{id}/restore', [DepartmentController::class, 'restore'])->name('departments.restore');
     // Route::put('/departments/{department:slug}', ...);       // update
     // Route::delete('/departments/{department:slug}', ...);    // destroy
+
+    // Route::put('about-us/{aboutUs}', [AboutUsController::class, 'update'])->name('about-us.update');
 
 });

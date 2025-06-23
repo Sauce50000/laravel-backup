@@ -12,6 +12,9 @@
     {{-- <link href="/dist/styles.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script> --}}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     @yield('styles')
 
     <style>
@@ -22,13 +25,17 @@
         a:not([class]):hover {
             color: rgb(245, 41, 65);
         }
+
+
+        [x-cloak] {
+            display: none !important;
+        }
     </style>
 
 
 </head>
 
 <body class="flex flex-col min-h-screen">
-
     <div>
         @include('partials.banner')
     </div>

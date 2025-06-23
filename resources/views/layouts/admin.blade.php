@@ -148,6 +148,38 @@
                         class="block py-2 px-4 rounded hover:bg-gray-100">Gallery</a></li>
                 <li><a href="{{ route('departments.index') }}"
                         class="block py-2 px-4 rounded hover:bg-gray-100">Department</a></li>
+                {{-- <li>
+                    <a href="{{ route('about-us.index')}}" class="block py-2 px-4 rounded hover:bg-gray-100">About Us</a>
+                </li> --}}
+                <li><a href="{{ route('office-details.index') }}"
+                        class="block py-2 px-4 rounded hover:bg-gray-100">Office Details </a></li>
+
+                <li x-data="{ open: false }">
+                    <button @click="open = !open"
+                        class="w-full text-left flex items-center justify-between py-2 px-4 rounded hover:bg-gray-100">
+                        Employee Management
+                        <svg class="w-4 h-4 transform transition-transform" :class="open ? 'rotate-180' : ''"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <ul x-show="open" x-collapse class="pl-6 space-y-1 mt-1 text-sm text-gray-700">
+                        <li>
+                            <a href="{{ route('employees.index') }}"
+                                class="block py-1 px-2 rounded hover:bg-gray-100 {{ request()->routeIs('employees.*') ? 'bg-blue-50 text-blue-600' : '' }}">
+                                Employees
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('posts.index') }}"
+                                class="block py-1 px-2 rounded hover:bg-gray-100 {{ request()->routeIs('posts.*') ? 'bg-blue-50 text-blue-600' : '' }}">
+                                Posts
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
             </ul>
         </aside>
 

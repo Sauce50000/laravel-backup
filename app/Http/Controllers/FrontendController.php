@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\Photo;
 use App\Models\NoticeCategory;
@@ -24,7 +25,8 @@ class FrontendController extends Controller
             ->with('type')
             ->get(); // Fetch publication categories
 
-        return view('frontend.index', compact('photos', 'categories', 'legalDocumentsCategories', 'publiactionCategories'));
+        $departments = Department::whereNull('deleted_at')->get(); // Fetch active departments
+        return view('frontend.index', compact('photos', 'categories', 'legalDocumentsCategories', 'publiactionCategories', 'departments'));
     }
 
     public function introduction()

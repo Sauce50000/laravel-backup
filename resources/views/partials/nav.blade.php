@@ -1,4 +1,4 @@
-<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 <div class="bg-[#004b8e] my-1.5 flex justify-left items-center text-white">
     <nav class="flex gap-6 px-10">
         <a href="/" class=" hover:text-[#99f9d7] px-3 py-2 rounded">गृहपृष्ठ</a>
@@ -13,7 +13,7 @@
             </button>
 
             <!-- Dropdown items -->
-            <div x-show="open" x-transition
+            <div x-show="open" x-cloak x-transition
                 class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
                 <a href="{{ route('introduction') }}" class="block px-4 py-2 text-md hover:bg-gray-200 ">परिचय</a>
                 <a href="{{ route('work-area') }}" class="block px-4 py-2 text-md hover:bg-gray-200">कार्य क्षेत्र</a>
@@ -47,7 +47,7 @@
             </button>
 
             <!-- Dynamic Dropdown Items -->
-            <div x-show="open" x-transition
+            <div x-show="open" x-cloak x-transition
                 class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
                 @foreach ($categories as $category)
                     <a href="{{ route('notices.category', $category->slug) }}"
@@ -95,7 +95,7 @@
 
             </div> --}}
 
-            <div x-show="open" x-transition
+            <div x-show="open" x-cloak x-transition
                 class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
 
                 <div x-data="{ open: false }" class="relative group w-full" @mouseenter="open = true"
@@ -129,7 +129,6 @@
                 class="hover:text-[#99f9d7] px-3 py-2 rounded inline-flex items-center">
                 प्रकाशन
             </button>
-
             <!-- Dropdown items -->
             {{-- <div x-show="open" x-transition
                 class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
@@ -140,7 +139,7 @@
                 <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">मन्त्रिपरिषद्का निर्णयहरु</a>
                 <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">अभीलेख</a>
             </div> --}}
-            <div x-show="open" x-transition
+            <div x-show="open" x-cloak x-transition
                 class="absolute left-full top-0 ml-1 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40
                             group-hover:left-full group-hover:top-0
                             sm:left-0 sm:top-full sm:ml-0"
@@ -152,29 +151,49 @@
                     </a>
                 @endforeach
             </div>
-
+        </div>
+        <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
+            <button @click="open = !open" @click.away="open = false"
+                class="hover:text-[#99f9d7] px-3 py-2 rounded inline-flex items-center">
+                महाशाखा
+            </button>
+            <div x-show="open" x-cloak x-transition
+                class="absolute left-full top-0 ml-1 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40
+                        group-hover:left-full group-hover:top-0
+                        sm:left-0 sm:top-full sm:ml-0"
+                :class="window.innerWidth - $el.getBoundingClientRect().right > 200 ? 'left-full top-0 ml-1' :
+                    'left-0 top-full ml-0'">
+                @foreach ($departments as $department)
+                    <a href="
+                {{-- {{ route('department.show', $department->slug) }} --}}
+                 "
+                        class="block px-4 py-2 text-md hover:bg-gray-200">
+                        {{ $department->title }}
+                    </a>
+                @endforeach
+            </div>
         </div>
 
-         <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
+        <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
             <button @click="open = !open" @click.away="open = false"
                 class="hover:text-[#99f9d7] px-3 py-2 rounded inline-flex items-center">
                 ग्यालरी
             </button>
 
-            <div x-show="open" x-transition
+            <div x-show="open" x-cloak x-transition
                 class="absolute left-full top-0 ml-1 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40
                             group-hover:left-full group-hover:top-0
                             sm:left-0 sm:top-full sm:ml-0"
                 :class="window.innerWidth - $el.getBoundingClientRect().right > 200 ? 'left-full top-0 ml-1' :
                     'left-0 top-full ml-0'">
-                
-                    <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
-                        Photo Gallery
-                    </a>
-                    <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
-                        Video Gallery
-                    </a>
-                
+
+                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
+                    Photo Gallery
+                </a>
+                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
+                    Video Gallery
+                </a>
+
             </div>
 
         </div>
