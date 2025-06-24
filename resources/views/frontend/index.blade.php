@@ -57,37 +57,74 @@
                         <!-- वार्षिक विकास कार्यक्रम -->
                         <div id="annual-plan-content" class="p-4 border border-gray-300 rounded-b-lg text-black "
                             role="tabpanel" aria-labelledby="annual-plan-tab">
-                            <p class="text-sm">
-                                This is some placeholder content for the
-                                <strong class="font-medium">
-                                    वार्षिक विकास कार्यक्रम
-                                </strong>
-                                section.
-                            </p>
+                            
+                            <a href="{{ route('pdf.view', ['category' => 'annual-development-program', 'slug' => 'annual-development-program-2081-082']) }}"
+                                target="_blank"
+                                class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
+                                <span class="flex items-center text-sm">
+                                    <i class="fas fa-link text-blue-600 mr-2"></i>
+                                    वार्षिक विकास कार्यक्रम २०८१-०८२
+                                </span>
+                                {{-- <i class="fas fa-eye text-blue-600 ml-2"></i>  --}}
+                            </a>
                         </div>
 
                         <!-- सूचना तथा समाचारहरु -->
-                        <div id="news-updates-content" class="hidden p-4 border border-gray-300 rounded-b-lg text-black "
+                        <div id="news-updates-content" class="hidden border border-gray-300 rounded-b-lg text-black "
                             role="tabpanel" aria-labelledby="news-updates-tab">
-                            <p class="text-sm">
-                                This is some placeholder content for the
-                                <strong class="font-medium">
-                                    सूचना तथा समाचारहरु
-                                </strong>
-                                section.
-                            </p>
+                           
+                            @php
+                                $categories = \App\Helpers\NoticeHelper::getNoticeCategories();
+                            @endphp
+                            @foreach ($categories as $i => $category)
+                                <ul class="list-disc list-inside  space-y-2">
+                                    @if ($category->slug === 'information-and-news')
+                                        @foreach ($category->notices()->latest()->get() as $notice)
+                                            <li class="p-2 mb-2 w-full list-none relative">
+                                                <a href="{{ route('pdf.view', ['category' => $category->slug, 'slug' => $notice->slug]) }}"
+                                                    target="_blank"
+                                                    class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
+                                                    <span class="flex items-center text-sm">
+                                                        <i class="fas fa-link text-blue-600 mr-2"></i>
+                                                        {{ $notice->title }}
+                                                    </span>
+                                                    {{-- <i class="fas fa-eye text-blue-600 ml-2"></i> --}}
+                                                </a>
+                                                @if (!$loop->last)
+                                                    <div class="absolute left-0 right-0 bottom-0 h-px bg-gray-300"></div>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            @endforeach
                         </div>
 
                         <!-- परिपत्र/निर्देशन -->
                         <div id="circulars-content" class="hidden p-4 border border-gray-300 rounded-b-lg text-black "
                             role="tabpanel" aria-labelledby="circulars-tab">
-                            <p class="text-sm">
-                                This is some placeholder content for the
-                                <strong class="font-medium">
-                                    परिपत्र/निर्देशन
-                                </strong>
-                                section.
-                            </p>
+                            @foreach ($categories as $i => $category)
+                                <ul class="list-disc list-inside  space-y-2">
+                                    @if ($category->slug === 'circulars-instructions')
+                                        @foreach ($category->notices()->latest()->get() as $notice)
+                                            <li class="p-2 mb-2 w-full list-none relative">
+
+                                                <a href="{{ route('pdf.view', ['category' => $category->slug, 'slug' => $notice->slug]) }}"
+                                                    target="_blank"
+                                                    class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
+                                                    <span class="flex items-center text-sm">
+                                                        <i class="fas fa-link text-blue-600 mr-2"></i>
+                                                        {{ $notice->title }}
+                                                    </span>
+                                                    {{-- <i class="fas fa-eye text-blue-600 ml-2"></i> --}}
+                                                </a>
+                                                @if (!$loop->last)
+                                                    <div class="absolute left-0 right-0 bottom-0 h-px bg-gray-300"></div>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -199,8 +236,8 @@
                             class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                             <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <span class="sr-only">Next</span>
                         </span>
@@ -250,9 +287,6 @@
                 <div class="border  border-gray-400 rounded px-4 py-2 shadow-md">
                     <h3 class="text-black m-1 font-bold">सूचना पाटि</h3>
                     <!-- Tab Navigation -->
-                    @php
-                        $categories = \App\Helpers\NoticeHelper::getNoticeCategories();
-                    @endphp
 
                     <div class="flex flex-wrap justify-center" data-tabs-toggle="#notice-tab"
                         data-tabs-active-classes="text-white bg-red-500 dark:bg-red-800 border border-white"
@@ -278,7 +312,8 @@
                                 <ul class="list-disc list-inside mt-4 space-y-2">
                                     @foreach ($category->notices()->latest()->take(3)->get() as $notice)
                                         <li class="border-b border-gray-300 p-2 mb-2 w-full list-none">
-                                            <a href="{{ route('pdf.view', ['category' => $category->slug, 'slug' => $notice->slug]) }}" target="_blank"
+                                            <a href="{{ route('pdf.view', ['category' => $category->slug, 'slug' => $notice->slug]) }}"
+                                                target="_blank"
                                                 class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
                                                 <span class="flex items-center">
                                                     <i class="fas fa-link text-blue-600 mr-2"></i> <!-- Link icon -->
@@ -332,7 +367,8 @@
                                 <ul class="list-disc list-inside mt-4 space-y-2">
                                     @foreach ($recordCategory->records()->latest()->take(3)->get() as $record)
                                         <li class="border-b border-gray-300 p-2 mb-2 w-full list-none">
-                                            <a href="{{ route('pdf.view', ['category' => $recordCategory->slug, 'slug' => $record->slug]) }}" target="_blank"
+                                            <a href="{{ route('pdf.view', ['category' => $recordCategory->slug, 'slug' => $record->slug]) }}"
+                                                target="_blank"
                                                 class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
                                                 <span class="flex items-center">
                                                     <i class="fas fa-link text-blue-600 mr-2"></i> <!-- Link icon -->
