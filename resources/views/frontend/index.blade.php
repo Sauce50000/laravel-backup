@@ -278,7 +278,7 @@
                                 <ul class="list-disc list-inside mt-4 space-y-2">
                                     @foreach ($category->notices()->latest()->take(3)->get() as $notice)
                                         <li class="border-b border-gray-300 p-2 mb-2 w-full list-none">
-                                            <a href="{{ asset('storage/' . $notice->file_path) }}" target="_blank"
+                                            <a href="{{ route('pdf.view', ['category' => $category->slug, 'slug' => $notice->slug]) }}" target="_blank"
                                                 class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
                                                 <span class="flex items-center">
                                                     <i class="fas fa-link text-blue-600 mr-2"></i> <!-- Link icon -->
@@ -290,8 +290,8 @@
                                     @endforeach
                                 </ul>
                                 <div class="flex justify-end my-2">
-                                    <a href="#"
-                                        class="bg-blue-600 text-white text-xs px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                                    <a href="{{ route('notice.showpdfList', $category->slug) }}"
+                                        class="bg-blue-600 text-white text-xs px-4 py-2 rounded hover:bg-red-500 transition-colors">
                                         थप सामग्री
                                     </a>
                                 </div>
@@ -332,7 +332,7 @@
                                 <ul class="list-disc list-inside mt-4 space-y-2">
                                     @foreach ($recordCategory->records()->latest()->take(3)->get() as $record)
                                         <li class="border-b border-gray-300 p-2 mb-2 w-full list-none">
-                                            <a href="{{ asset('storage/' . $record->file_path) }}" target="_blank"
+                                            <a href="{{ route('pdf.view', ['category' => $recordCategory->slug, 'slug' => $record->slug]) }}" target="_blank"
                                                 class="flex items-center justify-between text-blue-600 hover:text-red-500 hover:bg-gray-50 rounded">
                                                 <span class="flex items-center">
                                                     <i class="fas fa-link text-blue-600 mr-2"></i> <!-- Link icon -->
@@ -344,8 +344,8 @@
                                     @endforeach
                                 </ul>
                                 <div class="flex justify-end my-2">
-                                    <a href="#"
-                                        class="bg-blue-600 text-white text-xs px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                                    <a href="{{ route('document.showpdfList', ['slug' => $recordCategory->slug, 'id' => $recordCategory->record_type_id]) }}"
+                                        class="bg-blue-600 text-white text-xs px-4 py-2 rounded hover:bg-red-500 transition-colors">
                                         थप सामग्री
                                     </a>
                                 </div>

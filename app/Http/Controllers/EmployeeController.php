@@ -109,7 +109,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        $employee->isactive = 0; // Set is_active to false
+        $employee->is_active = 0; // Set is_active to false
         $employee->save();
         // Soft delete the employee
         $employee->delete();

@@ -147,12 +147,16 @@
                 <li><a href="{{ route('photos-galleries.index') }}"
                         class="block py-2 px-4 rounded hover:bg-gray-100">Gallery</a></li>
                 <li><a href="{{ route('departments.index') }}"
-                        class="block py-2 px-4 rounded hover:bg-gray-100">Department</a></li>
+                        class="block py-2 px-4 rounded hover:bg-gray-100">Department</a>
+                </li>
                 {{-- <li>
                     <a href="{{ route('about-us.index')}}" class="block py-2 px-4 rounded hover:bg-gray-100">About Us</a>
                 </li> --}}
-                <li><a href="{{ route('office-details.index') }}"
-                        class="block py-2 px-4 rounded hover:bg-gray-100">Office Details </a></li>
+                <li>
+                    <a href="{{ route('office-details.index') }}"
+                        class="block py-2 px-4 rounded hover:bg-gray-100">Office Details 
+                    </a>
+                </li>
 
                 <li x-data="{ open: false }">
                     <button @click="open = !open"

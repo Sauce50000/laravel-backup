@@ -18,13 +18,13 @@
     @yield('styles')
 
     <style>
-        a:not([class]) {
+        /* a:not([class]) {
             color: rgb(15, 132, 190);
         }
 
         a:not([class]):hover {
             color: rgb(245, 41, 65);
-        }
+        } */
 
 
         [x-cloak] {

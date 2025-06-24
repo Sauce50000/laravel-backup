@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\NoticeCategory;
+use App\Models\officeDetail;
 use App\Models\RecordCategory;
 
 class NoticeHelper
@@ -18,4 +19,10 @@ class NoticeHelper
             $query->where('record_type_id', 1); // 1 = legal documents (or whatever ID it is)
         })->get();
     }
+
+    // public static function getOfficeDetails()
+    // {
+    //     return officeDetail::first();
+    // }
+
 }

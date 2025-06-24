@@ -34,27 +34,23 @@
     </div>
     <div class="w-full md:w-1/3 p-4">
         <h3 class="underline underline-offset-7 pb-3 font-bold">महत्त्वपूर्ण लिङ्क</h3>
+        @php
+            $links = [
+                ['url' => '#', 'label' => 'कर्णाली प्रदेश पोर्टल'],
+                ['url' => '#', 'label' => 'प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय'],
+                ['url' => '#', 'label' => 'नेपाल सरकार अर्थ मन्त्रालय'],
+                ['url' => '#', 'label' => 'प्रदेश प्रमुखको कार्यालय, कर्णाली प्रदेश'],
+                ['url' => '#', 'label' => 'सङ्घीय मामिला तथा सामान्य प्रशासन मन्त्रालय'],
+                ['url' => '#', 'label' => 'प्रदेश सभा सचिवालय, कर्णाली प्रदेश'],
+                ['url' => '#', 'label' => 'आन्तरिक मामिला तथा कानून मन्त्रालय, कर्णाली प्रदेश'],
+            ];
+        @endphp
         <ul class="space-y-2">
-            <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> कर्णाली प्रदेश
-                    पोर्टल</a></li>
-            <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> प्रधानमन्त्री
-                    तथा
-                    मन्त्रिपरिषद्को कार्यालय</a></li>
-            <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> नेपाल सरकार
-                    अर्थ मन्त्रालय
-                </a></li>
-            <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> प्रदेश प्रमुखको
-                    कार्यालय,
-                    कर्णाली प्रदेश</a></li>
-            <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> सङ्घीय मामिला
-                    तथा सामान्य
-                    प्रशासन मन्त्रालय</a></li>
-            <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> प्रदेश सभा
-                    सचिवालय,
-                    कर्णाली प्रदेश</a></li>
-            <li class="border border-white my-0 px-2 py-1"><a href="#"><i class="fas fa-link"></i> आन्तरिक मामिला
-                    तथा कानून
-                    मन्त्रालय, कर्णाली प्रदेश</a></li>
+            @foreach($links as $link)
+                <li class="border border-white my-0 px-2 py-1 text-white hover:underline duration-300">
+                    <a href="{{ $link['url'] }}"><i class="fas fa-link"></i> {{ $link['label'] }}</a>
+                </li>
+            @endforeach
         </ul>
     </div>
 </div>

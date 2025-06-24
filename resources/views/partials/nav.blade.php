@@ -1,4 +1,3 @@
-
 <div class="bg-[#004b8e] my-1.5 flex justify-left items-center text-white">
     <nav class="flex gap-6 px-10">
         <a href="/" class=" hover:text-[#99f9d7] px-3 py-2 rounded">गृहपृष्ठ</a>
@@ -15,9 +14,15 @@
             <!-- Dropdown items -->
             <div x-show="open" x-cloak x-transition
                 class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
-                <a href="{{ route('introduction') }}" class="block px-4 py-2 text-md hover:bg-gray-200 ">परिचय</a>
+                {{-- <a href="{{ route('introduction') }}" class="block px-4 py-2 text-md hover:bg-gray-200 ">परिचय</a>
                 <a href="{{ route('work-area') }}" class="block px-4 py-2 text-md hover:bg-gray-200">कार्य क्षेत्र</a>
-                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">नागरिक वडापत्र</a>
+                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">नागरिक वडापत्र</a> --}}
+                @foreach ($navofficeDetails as $officeDetail)
+                    <a href="{{ route('office-details.showOfficeDetails', $officeDetail) }}"
+                        class="block px-4 py-2 text-md hover:bg-gray-200">
+                        {{ $officeDetail->title }}
+                    </a>
+                @endforeach
                 <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">कर्मचारी विवरण</a>
             </div>
         </div>
@@ -49,8 +54,8 @@
             <!-- Dynamic Dropdown Items -->
             <div x-show="open" x-cloak x-transition
                 class="absolute mt-0 bg-white border border-gray-200 text-black rounded shadow-md z-50 w-40">
-                @foreach ($categories as $category)
-                    <a href="{{ route('notices.category', $category->slug) }}"
+                @foreach ($navcategories as $category)
+                    <a href="{{ route('notice.showpdfList', $category->slug) }}"
                         class="block px-4 py-2 text-md hover:bg-gray-200">
                         {{ $category->title }}
                     </a>
@@ -112,8 +117,11 @@
                             sm:left-0 sm:top-full sm:ml-0"
                         :class="window.innerWidth - $el.getBoundingClientRect().right > 200 ? 'left-full top-0 ml-1' :
                             'left-0 top-full ml-0'">
-                        @foreach ($legalDocumentsCategories as $category)
-                            <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
+                        @foreach ($navlegalDocumentsCategories as $category)
+                            <a href="{{ route('document.showpdfList', ['slug' => $category->slug, 'id' => $category->record_type_id]) }}
+                            {{-- {{ route('legal-document.showpdfList',$category->slug,$category->record_type_id)}} --}}
+                             "
+                                class="block px-4 py-2 text-md hover:bg-gray-200">
                                 {{ $category->title }}
                             </a>
                         @endforeach
@@ -145,8 +153,11 @@
                             sm:left-0 sm:top-full sm:ml-0"
                 :class="window.innerWidth - $el.getBoundingClientRect().right > 200 ? 'left-full top-0 ml-1' :
                     'left-0 top-full ml-0'">
-                @foreach ($publiactionCategories as $category)
-                    <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
+                @foreach ($navpubliactionCategories as $category)
+                    <a href="
+                    {{ route('document.showpdfList', ['slug' => $category->slug, 'id' => $category->record_type_id]) }}
+                    "
+                        class="block px-4 py-2 text-md hover:bg-gray-200">
                         {{ $category->title }}
                     </a>
                 @endforeach
@@ -163,10 +174,8 @@
                         sm:left-0 sm:top-full sm:ml-0"
                 :class="window.innerWidth - $el.getBoundingClientRect().right > 200 ? 'left-full top-0 ml-1' :
                     'left-0 top-full ml-0'">
-                @foreach ($departments as $department)
-                    <a href="
-                {{-- {{ route('department.show', $department->slug) }} --}}
-                 "
+                @foreach ($navdepartments as $department)
+                    <a href=" {{ route('department.showdepartment', $department->slug) }} "
                         class="block px-4 py-2 text-md hover:bg-gray-200">
                         {{ $department->title }}
                     </a>
@@ -187,7 +196,7 @@
                 :class="window.innerWidth - $el.getBoundingClientRect().right > 200 ? 'left-full top-0 ml-1' :
                     'left-0 top-full ml-0'">
 
-                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
+                <a href="{{ route('photo-gallery')}}" class="block px-4 py-2 text-md hover:bg-gray-200">
                     Photo Gallery
                 </a>
                 <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">
