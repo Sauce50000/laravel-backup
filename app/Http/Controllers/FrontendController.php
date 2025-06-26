@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Employee;
 use App\Models\Notice;
 use Illuminate\Http\Request;
 use App\Models\Photo;
@@ -183,5 +184,16 @@ class FrontendController extends Controller
             'photoGallery' => $photoGallery,
             'photos' => $photos,
         ]);
+    }
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
+
+    public function employee()
+    {
+         $employees = Employee::with(['post', 'branch'])->paginate(10);
+            // return view('backend.employee.index', compact('employees', 'showDeleted'));
+        return view('frontend.employee',compact('employees'));
     }
 }

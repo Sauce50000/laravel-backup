@@ -16,15 +16,19 @@ class Employee extends Model
         'phone',
         'post_id',
         'department_id',
+        'branch_id',
         'image_path',
         'is_active',
     ];
 
-
-
     public function post()
     {
         return $this->belongsTo(Post::class, 'post_id');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class,'branch_id');
     }
 
     public function department()

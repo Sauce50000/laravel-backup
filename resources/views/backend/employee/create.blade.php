@@ -65,7 +65,7 @@
             </div>
 
             <div>
-                <label for="post_id" class="block text-sm font-medium text-gray-700">Post *</label>
+                <label for="post_id" class="block text-sm font-medium text-gray-700">Post</label>
                 <select name="post_id" id="post_id" required class="w-full border-gray-300 rounded-md shadow-sm p-2">
                     <option value="">Select Post</option>
                     @foreach ($posts as $post)
@@ -77,7 +77,7 @@
             </div>
 
             <div>
-                <label for="department_id" class="block text-sm font-medium text-gray-700">Department *</label>
+                <label for="department_id" class="block text-sm font-medium text-gray-700">Department</label>
                 <select name="department_id" id="department_id" required
                     class="w-full border-gray-300 rounded-md shadow-sm p-2">
                     <option value="">Select Department</option>
@@ -89,7 +89,17 @@
                     <option value="">none</option>
                 </select>
             </div>
-
+            <div>
+                <label for="branch_id" class="block text-sm font-medium text-gray-700">Branch</label>
+                <select name="branch_id" id="branch_id" class="w-full border-gray-300 rounded-md shadow-sm p-2">
+                    <option value="">Select Branch</option>
+                    @foreach ($branches as $branch)
+                        <option value="{{ $branch->id }}"
+                            {{ old('branch_id', $employee->branch_id ?? '') == $branch->id ? 'selected' : '' }}>
+                            {{ $branch->title }}</option>
+                    @endforeach
+                </select>
+            </div>
             <div>
                 <label
                     class="w-1/5 flex items-center space-x-2  font-medium py-2 px-4 rounded-lg hover:bg-sky-300 transition duration-300 ease-in-out cursor-pointer">
@@ -108,7 +118,7 @@
                     class="relative flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-500 transition duration-200">
 
                     <input type="file" name="image" id="image"
-                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*" 
+                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*"
                         onchange="previewImage(this)">
 
                     <div id="image-icon">

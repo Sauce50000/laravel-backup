@@ -180,6 +180,12 @@
                                 Posts
                             </a>
                         </li>
+                         <li>
+                            <a href="{{ route('branches.index') }}"
+                                class="block py-1 px-2 rounded hover:bg-gray-100 {{ request()->routeIs('posts.*') ? 'bg-blue-50 text-blue-600' : '' }}">
+                                Branches
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

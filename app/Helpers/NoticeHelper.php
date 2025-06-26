@@ -10,7 +10,7 @@ class NoticeHelper
 {
     public static function getNoticeCategories()
     {
-        return NoticeCategory::orderBy('title')->get(); // or use `orderBy('title')`
+        return NoticeCategory::orderBy('title')->latest()->get(); // or use `orderBy('title')`
     }
 
     public static function getRecordCategoriesForLegalDocuments()

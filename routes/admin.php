@@ -10,6 +10,8 @@ use App\Http\Controllers\PhotoGalleryController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\BranchController;
+use App\Models\Branch;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
@@ -26,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('departments', DepartmentController::class);
     Route::resource('office-details', \App\Http\Controllers\OfficeDetailController::class);
     Route::resource('posts', \App\Http\Controllers\PostController::class);
+    Route::resource('branches',BranchController::class);
     Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
     Route::resource('about-us', AboutUsController::class);
 
@@ -49,6 +52,9 @@ Route::middleware(['auth'])->group(function () {
         ->name('record-types.restore');
     Route::put('record-categories/{category}/restore', [RecordCategoryController::class, 'restore'])
         ->name('record-categories.restore');
+
+    // Route::delete('branches/{branch}/force-delete', [BranchController::class, 'forceDelete'])->name('branches.forceDelete');
+    Route::patch('branches/{id}/restore', [BranchController::class, 'restore'])->name('branches.restore');
 
     Route::delete('records/{record}/force-delete', [RecordController::class, 'forceDelete'])->name('records.forceDelete');
     Route::patch('records/{id}/restore', [RecordController::class, 'restore'])->name('records.restore');

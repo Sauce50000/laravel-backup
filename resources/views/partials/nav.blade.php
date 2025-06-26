@@ -23,7 +23,7 @@
                         {{ $officeDetail->title }}
                     </a>
                 @endforeach
-                <a href="#" class="block px-4 py-2 text-md hover:bg-gray-200">कर्मचारी विवरण</a>
+                <a href="{{route('employee')}}" class="block px-4 py-2 text-md hover:bg-gray-200">कर्मचारी विवरण</a>
             </div>
         </div>
 
@@ -207,7 +207,7 @@
 
         </div>
 
-        <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">सम्पर्क</a>
+        <a href="{{route('contact-us')}}" class=" hover:text-[#99f9d7] px-3 py-2 rounded">सम्पर्क</a>
         {{-- <a href="#" class=" hover:text-[#99f9d7] px-3 py-2 rounded">पोर्टल</a> --}}
     </nav>
 </div>

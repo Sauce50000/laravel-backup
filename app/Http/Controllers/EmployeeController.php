@@ -8,6 +8,7 @@ use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Requests\Employee\StoreEmployeeRequest;
 use App\Http\Requests\Employee\UpdateEmployeeRequest;
+use App\Models\Branch;
 use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
@@ -34,7 +35,8 @@ class EmployeeController extends Controller
     {
         $posts = Post::all();
         $departments = Department::all();
-        return view('backend.employee.create', compact('posts', 'departments'));
+        $branches = Branch::all();
+        return view('backend.employee.create', compact('posts', 'departments','branches'));
     }
 
     /**
@@ -78,7 +80,8 @@ class EmployeeController extends Controller
         $edit = true;
         $posts = Post::all();
         $departments = Department::all();
-        return view('backend.employee.create', compact('employee', 'posts', 'departments', 'edit'));
+        $branches = Branch::all();
+        return view('backend.employee.create', compact('employee', 'posts', 'departments', 'branches','edit'));
     }
 
     /**

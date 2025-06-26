@@ -31,6 +31,8 @@ Route::get('/photo-gallery/{id}', [FrontendController::class, 'show'])->name('ph
 // Route::get('/work-area', [FrontendController::class, 'workArea'])->name('work-area');
 
 
+Route::get('/contact-us',[FrontendController::class,'contact'])->name('contact-us');
+Route::get('/employee',[FrontendController::class,'employee'])->name('employee');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

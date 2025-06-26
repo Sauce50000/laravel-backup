@@ -28,6 +28,7 @@ class UpdateEmployeeRequest extends FormRequest
             'phone' => 'nullable|string|max:20',
             'post_id' => 'required|exists:posts,id',
             'department_id' => 'nullable|exists:departments,id',
+            'branch_id' => 'nullable|exists:branches,id',
             'image_path' => 'nullable|image|max:10240',
             'is_active' => 'nullable|in:on,off,true,false,1,0',
         ];
